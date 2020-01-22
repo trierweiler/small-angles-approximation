@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 theta = np.linspace(0, 45, 46)
 y_sin = np.sin(theta*math.pi/180)
 
-err_sin = np.cumsum(abs(100*(y_sin[1:] - theta[1:]*math.pi/180) / y_sin[1:]))
+err_sin = abs(100*(y_sin[1:] - theta[1:]*math.pi/180) / y_sin[1:])
 
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10,5))
 
@@ -30,4 +30,4 @@ axes[1].bar(theta[1:16], err_sin[0:15])
 axes[1].hlines(y=1, xmin=theta[1], xmax=theta[16], linestyles='dashed')
 axes[1].set_xlabel('Angle (deg)', style='italic', fontsize='large')
 axes[1].set_ylabel('% of error', style='italic', fontsize='large')
-axes[1].set_xticks(ticks=np.linspace(0, 15, 16))
+axes[1].set_xticks(ticks=np.linspace(0, 16, 15))
